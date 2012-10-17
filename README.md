@@ -12,14 +12,15 @@ cookbook cannot be used in Solo mode.
 Attributes
 ==========
 
-node[:hipchat_handler][:version] - The version of the Gem to install
-node[:hipchat_handler][:room_name] - The Hipchat room to send exceptions to
+* node[:hipchat_handler][:version] - The version of the Gem to install
+* node[:hipchat_handler][:room_name] - The Hipchat room to send exceptions to
 
 Usage
 =====
 
-include_recipe "hipchat_handler" (or add recipe[hipchat_handler] to your run
-list)
+include_recipe "hipchat_handler"
+
+Or add "recipe[hipchat_handler]" to your run list.
 
 Roadmap
 =======
