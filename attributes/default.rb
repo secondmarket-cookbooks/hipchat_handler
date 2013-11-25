@@ -18,5 +18,6 @@
 # limitations under the License.
 #
 
+default[:hipchat_handler][:http_version] = "0.11.0"
 default[:hipchat_handler][:version] = "0.4.1"
 default[:hipchat_handler][:room_name] = "Chef"
