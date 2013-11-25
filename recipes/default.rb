@@ -19,13 +19,17 @@
 #
 
 if Chef::Config[:solo]
-  Chef::Log.warn("Recipe needs data bag access, can't run in Solo mode.")
-  return
+  Chef::Log.warn("Recipe needs data bag access, will run in test-mode with Solo.")
 end
 
 include_recipe "chef_handler"
 
 require "rubygems"
+
+chef_gem 'httparty' do
+  version node['hipchat_handler']['httparty_version']
+  action :nothing
+end.run_action(:install)
 
 chef_gem "hipchat" do
   action :install
@@ -37,4 +41,4 @@ chef_handler "HipChat::NotifyRoom" do
   arguments [data_bag_item('hipchat_apikeys', 'chef')["apikey"], node[:hipchat_handler][:room_name]]
   supports :exception => true
   action :enable
-end
+end.run_action(:enable)
